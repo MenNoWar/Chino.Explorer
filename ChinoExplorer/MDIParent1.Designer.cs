@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Knoten0");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Knoten1");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Knoten2");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Knoten3");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Knoten0");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Knoten1");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Knoten2");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Knoten3");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Knoten1");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Knoten1");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.changeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -73,7 +74,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
-            this.windowsMenu});
+            this.windowsMenu,
+            this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -201,19 +203,19 @@
             this.tvSchemas.ImageList = this.imageList2;
             this.tvSchemas.Location = new System.Drawing.Point(0, 0);
             this.tvSchemas.Name = "tvSchemas";
-            treeNode1.Name = "Knoten0";
-            treeNode1.Text = "Knoten0";
-            treeNode2.Name = "Knoten1";
-            treeNode2.Text = "Knoten1";
-            treeNode3.Name = "Knoten2";
-            treeNode3.Text = "Knoten2";
-            treeNode4.Name = "Knoten3";
-            treeNode4.Text = "Knoten3";
+            treeNode6.Name = "Knoten0";
+            treeNode6.Text = "Knoten0";
+            treeNode7.Name = "Knoten1";
+            treeNode7.Text = "Knoten1";
+            treeNode8.Name = "Knoten2";
+            treeNode8.Text = "Knoten2";
+            treeNode9.Name = "Knoten3";
+            treeNode9.Text = "Knoten3";
             this.tvSchemas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
             this.tvSchemas.SelectedImageIndex = 4;
             this.tvSchemas.ShowLines = false;
             this.tvSchemas.ShowPlusMinus = false;
@@ -251,10 +253,10 @@
             this.tvDetails.ImageList = this.imageList2;
             this.tvDetails.Location = new System.Drawing.Point(0, 19);
             this.tvDetails.Name = "tvDetails";
-            treeNode5.Name = "Knoten1";
-            treeNode5.Text = "Knoten1";
+            treeNode1.Name = "Knoten1";
+            treeNode1.Text = "Knoten1";
             this.tvDetails.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode1});
             this.tvDetails.SelectedImageIndex = 0;
             this.tvDetails.ShowRootLines = false;
             this.tvDetails.Size = new System.Drawing.Size(180, 160);
@@ -313,6 +315,13 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +379,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem changeConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

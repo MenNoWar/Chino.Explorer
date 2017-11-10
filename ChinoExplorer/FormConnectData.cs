@@ -20,13 +20,6 @@ namespace ChinoExplorer
             CustomerKey = Properties.Settings.Default.CustomerKey;
             HostUrl = Properties.Settings.Default.HostUrl;
             RepositoryId = Properties.Settings.Default.RepositoryId;
-
-#if DEBUG
-//            tbCustomerId.Text = "19c47c7d-144e-4a49-9d75-48b28ba2569f";
-//            tbCustomerKey.Text = "432074bc-7b3c-440a-a7e8-4ac220bef256";
-//            tbHost.Text = "https://api.test.chino.io/v1";
-//            tbRepositoryId.Text = "a6ab3ea6-0959-455d-bbcd-26df6e6b45db";
-#endif
         }
 
         public string RepositoryId

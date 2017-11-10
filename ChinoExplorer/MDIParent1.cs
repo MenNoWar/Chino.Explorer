@@ -54,7 +54,7 @@ namespace ChinoExplorer
         }
 
         private Api Api = null;
-        private void MDIParent1_Load(object sender, EventArgs e)
+        private void ShowConnectionDialog()
         {
             var frmConnect = new FormConnectData();
             if (frmConnect.ShowDialog() == DialogResult.OK)
@@ -68,6 +68,11 @@ namespace ChinoExplorer
             }
         }
 
+        private void MDIParent1_Load(object sender, EventArgs e)
+        {
+            ShowConnectionDialog();
+        }
+        
         public string HostUrl { get; set; }
         public string CustomerId { get; set; }
         public string CustomerKey { get; set; }
@@ -155,10 +160,14 @@ namespace ChinoExplorer
 
         private void changeConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FormConnectData();
-            if (frm.ShowDialog() == DialogResult.OK)
+            ShowConnectionDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var about = new AboutBox())
             {
-                InitializeApi();
+                about.ShowDialog();
             }
         }
     }
