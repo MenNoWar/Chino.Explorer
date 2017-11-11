@@ -30,3 +30,6 @@ If you don't want to or currently can not compile the source, i put [a binary re
 ### About to come:
 - Schema structure maintenance
 - Permissions
+
+
+#### Please feel free to [write issues](https://github.com/MenNoWar/Chino.Explorer/issues), as that's a good way to make this software better.
