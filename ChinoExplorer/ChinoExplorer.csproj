@@ -71,6 +71,12 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="CollectionDataWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollectionDataWindow.Designer.cs">
+      <DependentUpon>CollectionDataWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConnectData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,8 +97,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDataWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDataWindow.Designer.cs">
+      <DependentUpon>UserDataWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CollectionDataWindow.resx">
+      <DependentUpon>CollectionDataWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConnectData.resx">
       <DependentUpon>FormConnectData.cs</DependentUpon>
@@ -113,6 +128,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserDataWindow.resx">
+      <DependentUpon>UserDataWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,6 +164,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="if_Database_copy_DynamoDB_Table_259307.ico" />
+    <None Include="Resources\if_icon-24-key_314756.png" />
+    <None Include="Resources\if_Database_copy_DynamoDB_Table_259307.png" />
+    <None Include="Resources\if_Database_copy_DynamoDB_Table_259307.ico" />
+    <None Include="Resources\if_Gnome-Edit-Delete-32_54973.png" />
+    <None Include="Resources\if_edit_3218.png" />
+    <None Include="Resources\if_edit_user_3918.png" />
+    <None Include="Resources\if_delete_user_3912.png" />
+    <None Include="Resources\if_add_user_3802.png" />
     <None Include="Resources\chino.io-chino-header-logo.png" />
     <None Include="Resources\aviary_1481637692816.png" />
   </ItemGroup>

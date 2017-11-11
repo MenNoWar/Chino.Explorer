@@ -29,37 +29,56 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Knoten0");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Knoten1");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Knoten2");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Knoten3");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Knoten1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Knoten1");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Knoten0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Knoten2");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Knoten0");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Knoten3", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Knoten1");
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tvSchemas = new System.Windows.Forms.TreeView();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.ilTreeviews = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.tvDetails = new System.Windows.Forms.TreeView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ilToolbars = new System.Windows.Forms.ImageList(this.components);
+            this.cmsUser = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsUserHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSchemas = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsSchemaHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsUserRoot = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.changeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectUserSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,12 +87,16 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.cmsUser.SuspendLayout();
+            this.cmsSchemas.SuspendLayout();
+            this.cmsUserRoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
+            this.toolsToolStripMenuItem,
             this.windowsMenu,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -94,12 +117,30 @@
             this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "&File";
             // 
+            // changeConnectionToolStripMenuItem
+            // 
+            this.changeConnectionToolStripMenuItem.Name = "changeConnectionToolStripMenuItem";
+            this.changeConnectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeConnectionToolStripMenuItem.Text = "Change Connection";
+            this.changeConnectionToolStripMenuItem.Click += new System.EventHandler(this.changeConnectionToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "&Quit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // windowsMenu
             // 
@@ -148,6 +189,13 @@
             this.arrangeIconsToolStripMenuItem.Text = "Arrange S&ymbols";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -171,7 +219,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 460);
+            this.panel1.Size = new System.Drawing.Size(221, 460);
             this.panel1.TabIndex = 9;
             // 
             // splitContainer1
@@ -191,7 +239,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.tvDetails);
-            this.splitContainer1.Size = new System.Drawing.Size(180, 423);
+            this.splitContainer1.Size = new System.Drawing.Size(215, 423);
             this.splitContainer1.SplitterDistance = 237;
             this.splitContainer1.TabIndex = 9;
             // 
@@ -200,40 +248,49 @@
             this.tvSchemas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvSchemas.HideSelection = false;
             this.tvSchemas.ImageIndex = 4;
-            this.tvSchemas.ImageList = this.imageList2;
+            this.tvSchemas.ImageList = this.ilTreeviews;
             this.tvSchemas.Location = new System.Drawing.Point(0, 0);
             this.tvSchemas.Name = "tvSchemas";
-            treeNode6.Name = "Knoten0";
-            treeNode6.Text = "Knoten0";
-            treeNode7.Name = "Knoten1";
-            treeNode7.Text = "Knoten1";
-            treeNode8.Name = "Knoten2";
-            treeNode8.Text = "Knoten2";
-            treeNode9.Name = "Knoten3";
-            treeNode9.Text = "Knoten3";
+            treeNode1.Name = "Knoten1";
+            treeNode1.Text = "Knoten1";
+            treeNode2.Name = "Knoten1";
+            treeNode2.Text = "Knoten1";
+            treeNode3.Checked = true;
+            treeNode3.Name = "Knoten0";
+            treeNode3.Text = "Knoten0";
+            treeNode4.Name = "Knoten2";
+            treeNode4.Text = "Knoten2";
+            treeNode5.Name = "Knoten0";
+            treeNode5.Text = "Knoten0";
+            treeNode6.Name = "Knoten3";
+            treeNode6.Text = "Knoten3";
             this.tvSchemas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9});
+            treeNode3,
+            treeNode4,
+            treeNode6});
             this.tvSchemas.SelectedImageIndex = 4;
-            this.tvSchemas.ShowLines = false;
-            this.tvSchemas.ShowPlusMinus = false;
-            this.tvSchemas.ShowRootLines = false;
-            this.tvSchemas.Size = new System.Drawing.Size(180, 237);
+            this.tvSchemas.Size = new System.Drawing.Size(215, 237);
             this.tvSchemas.TabIndex = 0;
+            this.tvSchemas.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.tvSchemas_AfterCollapse);
+            this.tvSchemas.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.tvSchemas_AfterExpand);
             this.tvSchemas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvSchemas_AfterSelect);
+            this.tvSchemas.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvSchemas_NodeMouseClick);
             this.tvSchemas.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvSchemas_NodeMouseDoubleClick);
             // 
-            // imageList2
+            // ilTreeviews
             // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "if_table_green_48_10358.png");
-            this.imageList2.Images.SetKeyName(1, "if_icon-24-key_314756.png");
-            this.imageList2.Images.SetKeyName(2, "if_stock_select-column-16_94719.png");
-            this.imageList2.Images.SetKeyName(3, "if_icon-24-key_314861.png");
-            this.imageList2.Images.SetKeyName(4, "if_Database_copy_DynamoDB_Table_259307.ico");
+            this.ilTreeviews.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilTreeviews.ImageStream")));
+            this.ilTreeviews.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilTreeviews.Images.SetKeyName(0, "if_table_green_48_10358.png");
+            this.ilTreeviews.Images.SetKeyName(1, "if_icon-24-key_314756.png");
+            this.ilTreeviews.Images.SetKeyName(2, "if_stock_select-column-16_94719.png");
+            this.ilTreeviews.Images.SetKeyName(3, "if_icon-24-key_314861.png");
+            this.ilTreeviews.Images.SetKeyName(4, "schema");
+            this.ilTreeviews.Images.SetKeyName(5, "folder_grey");
+            this.ilTreeviews.Images.SetKeyName(6, "folder_red");
+            this.ilTreeviews.Images.SetKeyName(7, "folder_grey_open");
+            this.ilTreeviews.Images.SetKeyName(8, "folder_red_open");
+            this.ilTreeviews.Images.SetKeyName(9, "user");
             // 
             // label1
             // 
@@ -250,16 +307,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvDetails.ImageIndex = 2;
-            this.tvDetails.ImageList = this.imageList2;
+            this.tvDetails.ImageList = this.ilTreeviews;
             this.tvDetails.Location = new System.Drawing.Point(0, 19);
             this.tvDetails.Name = "tvDetails";
-            treeNode1.Name = "Knoten1";
-            treeNode1.Text = "Knoten1";
+            treeNode7.Name = "Knoten1";
+            treeNode7.Text = "Knoten1";
             this.tvDetails.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode7});
             this.tvDetails.SelectedImageIndex = 0;
             this.tvDetails.ShowRootLines = false;
-            this.tvDetails.Size = new System.Drawing.Size(180, 160);
+            this.tvDetails.Size = new System.Drawing.Size(215, 160);
             this.tvDetails.TabIndex = 0;
             // 
             // toolStrip1
@@ -270,9 +327,71 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(186, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(221, 31);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // ilToolbars
+            // 
+            this.ilToolbars.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilToolbars.ImageStream")));
+            this.ilToolbars.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilToolbars.Images.SetKeyName(0, "refresh-icon.png");
+            this.ilToolbars.Images.SetKeyName(1, "search-icon.png");
+            this.ilToolbars.Images.SetKeyName(2, "if_Database_copy_DynamoDB_Table_259307.png");
+            this.ilToolbars.Images.SetKeyName(3, "if_table_green_48_10358.png");
+            // 
+            // cmsUser
+            // 
+            this.cmsUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsUserHeader,
+            this.editToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.deleteToolStripMenuItem});
+            this.cmsUser.Name = "cmsUser";
+            this.cmsUser.Size = new System.Drawing.Size(108, 76);
+            // 
+            // cmsUserHeader
+            // 
+            this.cmsUserHeader.Enabled = false;
+            this.cmsUserHeader.Name = "cmsUserHeader";
+            this.cmsUserHeader.Size = new System.Drawing.Size(107, 22);
+            this.cmsUserHeader.Text = "User";
+            // 
+            // cmsSchemas
+            // 
+            this.cmsSchemas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsSchemaHeader,
+            this.editToolStripMenuItem1,
+            this.deleteToolStripMenuItem1});
+            this.cmsSchemas.Name = "cmsSchemas";
+            this.cmsSchemas.Size = new System.Drawing.Size(117, 70);
+            // 
+            // cmsSchemaHeader
+            // 
+            this.cmsSchemaHeader.Enabled = false;
+            this.cmsSchemaHeader.Name = "cmsSchemaHeader";
+            this.cmsSchemaHeader.Size = new System.Drawing.Size(116, 22);
+            this.cmsSchemaHeader.Text = "Schema";
+            // 
+            // cmsUserRoot
+            // 
+            this.cmsUserRoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usersToolStripMenuItem,
+            this.addNewUserToolStripMenuItem});
+            this.cmsUserRoot.Name = "cmsUserRoot";
+            this.cmsUserRoot.Size = new System.Drawing.Size(148, 48);
+            // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Enabled = false;
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.usersToolStripMenuItem.Text = "Users";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(104, 6);
             // 
             // toolStripButton1
             // 
@@ -294,33 +413,52 @@
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // imageList1
+            // editToolStripMenuItem
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "refresh-icon.png");
-            this.imageList1.Images.SetKeyName(1, "search-icon.png");
-            this.imageList1.Images.SetKeyName(2, "if_Database_copy_DynamoDB_Table_259307.png");
-            this.imageList1.Images.SetKeyName(3, "if_table_green_48_10358.png");
+            this.editToolStripMenuItem.Image = global::ChinoExplorer.Properties.Resources.if_edit_user_3918;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
-            // changeConnectionToolStripMenuItem
+            // deleteToolStripMenuItem
             // 
-            this.changeConnectionToolStripMenuItem.Name = "changeConnectionToolStripMenuItem";
-            this.changeConnectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.changeConnectionToolStripMenuItem.Text = "Change Connection";
-            this.changeConnectionToolStripMenuItem.Click += new System.EventHandler(this.changeConnectionToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Image = global::ChinoExplorer.Properties.Resources.if_delete_user_3912;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // editToolStripMenuItem1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.editToolStripMenuItem1.Image = global::ChinoExplorer.Properties.Resources.edit;
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.editToolStripMenuItem1.Text = "&Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
-            // aboutToolStripMenuItem
+            // deleteToolStripMenuItem1
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem1.Image = global::ChinoExplorer.Properties.Resources.delete;
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.deleteToolStripMenuItem1.Text = "&Delete";
+            // 
+            // addNewUserToolStripMenuItem
+            // 
+            this.addNewUserToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectUserSchemaToolStripMenuItem});
+            this.addNewUserToolStripMenuItem.Image = global::ChinoExplorer.Properties.Resources.if_add_user_3802;
+            this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
+            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.addNewUserToolStripMenuItem.Text = "Add new User";
+            // 
+            // selectUserSchemaToolStripMenuItem
+            // 
+            this.selectUserSchemaToolStripMenuItem.Enabled = false;
+            this.selectUserSchemaToolStripMenuItem.Name = "selectUserSchemaToolStripMenuItem";
+            this.selectUserSchemaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.selectUserSchemaToolStripMenuItem.Text = "Select UserSchema";
             // 
             // MDIParent1
             // 
@@ -348,6 +486,9 @@
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.cmsUser.ResumeLayout(false);
+            this.cmsSchemas.ResumeLayout(false);
+            this.cmsUserRoot.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,18 +509,32 @@
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList ilToolbars;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView tvSchemas;
-        private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.ImageList ilTreeviews;
         private System.Windows.Forms.TreeView tvDetails;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem changeConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsUser;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmsUserHeader;
+        private System.Windows.Forms.ContextMenuStrip cmsSchemas;
+        private System.Windows.Forms.ToolStripMenuItem cmsSchemaHeader;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip cmsUserRoot;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectUserSchemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

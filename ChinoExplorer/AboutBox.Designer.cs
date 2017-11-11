@@ -163,7 +163,7 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::ChinoExplorer.Properties.Resources.aviary_1481637692816;
+            this.pictureBox1.Image = global::ChinoExplorer.Properties.Resources.nursit_header_logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(125, 108);
@@ -175,7 +175,7 @@
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::ChinoExplorer.Properties.Resources.chino_io_chino_header_logo;
+            this.pictureBox2.Image = global::ChinoExplorer.Properties.Resources.chino_header_logo;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(125, 65);
