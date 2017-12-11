@@ -465,5 +465,59 @@ namespace ChinoExplorer
         {
             GenerateDataViewWindow();
         }
+
+
+        private string Chino2SqlType(Chino.Sdk.SchemaFieldType type)
+        {
+            switch (type)
+            {
+                case SchemaFieldType.base64:
+                case SchemaFieldType.blob:
+                    return "BLOB";
+                case SchemaFieldType.boolean:
+                case SchemaFieldType.integer:
+                    return "INTEGER";
+                case SchemaFieldType.@float:
+                    return "REAL";
+                case SchemaFieldType.json:
+                case SchemaFieldType.@string:
+                case SchemaFieldType.text:
+                case SchemaFieldType.time:
+                case SchemaFieldType.date:
+                case SchemaFieldType.datetime:
+                    return "TEXT";                
+
+            }
+
+            throw new Exception("Unknown clr type:" + type.ToString());
+        }
+
+        private void createSqlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tn = tvSchemas.SelectedNode;
+            if (tn.Tag == null) return;
+            var schema = tn.Tag as Schema;
+            if (schema == null) return;
+
+            using (var frm = new SqlForm()) {
+                var fields = new List<string>();
+                string sql = "CREATE TABLE " + schema.Description + " (";
+                fields.Add("\r\n\tId TEXT NOT NULL");
+                foreach (var f in schema.Fields)
+                {
+                    var s = "\r\n\t" + f.Name + " " + Chino2SqlType(f.Type) + (f.IsIndexed ? " NOT NULL" : "");
+                    fields.Add(s);
+                }
+
+                fields.Add("\r\n\tIsActive INTEGER");
+
+                sql += string.Join(",", fields);
+
+                sql += "\r\n)";
+
+                frm.Sql = sql;
+                frm.ShowDialog();
+            }
+        }
     }
 }
