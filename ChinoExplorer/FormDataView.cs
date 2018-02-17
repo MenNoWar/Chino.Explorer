@@ -46,7 +46,7 @@ namespace ChinoExplorer
             var dt = new DataTable();
             dt.BeginInit();
 
-            var idColumn = dt.Columns.Add("Id", typeof(string));
+            var idColumn = dt.Columns.Add("$DocumentId", typeof(string));
 
             dt.Columns.Add("IsActive", typeof(bool));
 
@@ -86,7 +86,7 @@ namespace ChinoExplorer
             foreach (Document doc in listResult.Documents)
             {
                 var dr = currentTable.Rows.Add();
-                dr["Id"] = doc.Id;
+                dr["$DocumentId"] = doc.Id;
                 dr["IsActive"] = doc.IsActive;
 
                 foreach (var prop in doc.Content)
@@ -111,7 +111,7 @@ namespace ChinoExplorer
         private Document DataRowToDocument(DataRow row)
         {
             if (row == null) return null;
-            var documentId = row["Id"] == DBNull.Value ? "" : (string)row["Id"];
+            var documentId = row["$DocumentId"] == DBNull.Value ? "" : (string)row["$DocumentId"];
             var docOrig = row.RowState == DataRowState.Added ? new Document() : Api.Documents.Get(documentId);
 
             var doc = new Document { Id = docOrig.Id };
@@ -158,7 +158,7 @@ namespace ChinoExplorer
 
         private void chinoData_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            var id = (string)e.Row.Cells["Id"].Value;
+            var id = (string)e.Row.Cells["$DocumentId"].Value;
             if (MessageBox.Show("Really delete the selected row?", "Confirm", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Api.Documents.Delete(id);
@@ -182,8 +182,7 @@ namespace ChinoExplorer
 
         private void chinoData_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            DataRow row = RowFromIndex(e.RowIndex);
-            // var id = (string)row["Id"];
+            DataRow row = RowFromIndex(e.RowIndex);            
             if (row == null) return;
             if (row.RowState != DataRowState.Unchanged)
             {
@@ -193,9 +192,8 @@ namespace ChinoExplorer
                         ValidateDataRow(row);
                         var doc = DataRowToDocument(row);
                         var id = Api.Documents.Create(CurrentSchema.Id, doc);
-                        row["Id"] = id;
+                        row["DocumentId"] = id;
                         row["IsActive"] = true;
-                        // MessageBox.Show("Add new");
                         break;
                     case DataRowState.Deleted:
                         // Api.Documents.Create(CurrentSchema.Id, doc);

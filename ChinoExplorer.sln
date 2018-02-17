@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinoExplorer", "ChinoExplorer\ChinoExplorer.csproj", "{114EBBF9-46FF-496D-A4CB-671209B04993}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.Sdk", "..\Chino.Sdk\Chino.Sdk\Chino.Sdk.csproj", "{63D9897D-5301-4459-9822-7F6F0BE1FCB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.Sdk", "..\EtnenosPortal\Etnenos.Api\chino\Chino.Sdk\Chino.Sdk.csproj", "{63D9897D-5301-4459-9822-7F6F0BE1FCB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

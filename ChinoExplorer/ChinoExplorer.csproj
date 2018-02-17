@@ -157,12 +157,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Chino.Sdk\Chino.Sdk\Chino.Sdk.csproj">
-      <Project>{63d9897d-5301-4459-9822-7f6f0be1fcb4}</Project>
-      <Name>Chino.Sdk</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 und x64%29</ProductName>
@@ -186,6 +180,12 @@
     <None Include="Resources\if_add_user_3802.png" />
     <None Include="Resources\chino.io-chino-header-logo.png" />
     <None Include="Resources\aviary_1481637692816.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EtnenosPortal\Etnenos.Api\chino\Chino.Sdk\Chino.Sdk.csproj">
+      <Project>{63d9897d-5301-4459-9822-7f6f0be1fcb4}</Project>
+      <Name>Chino.Sdk</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

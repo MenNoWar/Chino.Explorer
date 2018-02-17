@@ -74,14 +74,15 @@
             this.cmsSchemas = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsSchemaHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.createSqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsUserRoot = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectUserSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.createSqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -428,12 +429,30 @@
             this.editToolStripMenuItem1.Text = "&Edit";
             this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // createSqlToolStripMenuItem
+            // 
+            this.createSqlToolStripMenuItem.Name = "createSqlToolStripMenuItem";
+            this.createSqlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createSqlToolStripMenuItem.Text = "Create Sql";
+            this.createSqlToolStripMenuItem.Click += new System.EventHandler(this.createSqlToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Image = global::ChinoExplorer.Properties.Resources.delete;
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem1.Text = "&Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
             // cmsUserRoot
             // 
@@ -466,28 +485,20 @@
             this.selectUserSchemaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.selectUserSchemaToolStripMenuItem.Text = "Select UserSchema";
             // 
-            // toolStripSeparator3
+            // splitter1
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
-            // 
-            // createSqlToolStripMenuItem
-            // 
-            this.createSqlToolStripMenuItem.Name = "createSqlToolStripMenuItem";
-            this.createSqlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.createSqlToolStripMenuItem.Text = "Create Sql";
-            this.createSqlToolStripMenuItem.Click += new System.EventHandler(this.createSqlToolStripMenuItem_Click);
+            this.splitter1.Location = new System.Drawing.Point(221, 24);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 460);
+            this.splitter1.TabIndex = 11;
+            this.splitter1.TabStop = false;
             // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 506);
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -561,6 +572,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem createSqlToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.Splitter splitter1;
     }
 }
 

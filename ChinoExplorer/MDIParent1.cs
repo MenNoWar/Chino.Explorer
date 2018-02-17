@@ -33,11 +33,11 @@ namespace ChinoExplorer
         private Dictionary<string, Schema> SchemaList = new Dictionary<string, Schema>();
 
         private Dictionary<string, UserSchema> UserSchemaList = new Dictionary<string, UserSchema>();
-        
+
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -66,10 +66,28 @@ namespace ChinoExplorer
                 childForm.Close();
             }
         }
-        
-        private void ShowConnectionDialog()
+
+        private void ShowConnectionDialog(bool hidden = false)
         {
             var frmConnect = new FormConnectData();
+            if (hidden)
+            {
+                HostUrl = frmConnect.HostUrl;
+                CustomerId = frmConnect.CustomerId;
+                CustomerKey = frmConnect.CustomerKey;
+                RepositoryId = frmConnect.RepositoryId;
+                if (
+                                    !string.IsNullOrEmpty(HostUrl) &&
+                !string.IsNullOrEmpty(CustomerId) &&
+                !string.IsNullOrEmpty(CustomerKey) &&
+                !string.IsNullOrEmpty(RepositoryId)
+                    )
+                {
+                    this.InitializeApi();
+                    return;
+                }
+            }
+
             if (frmConnect.ShowDialog() == DialogResult.OK)
             {
                 HostUrl = frmConnect.HostUrl;
@@ -83,9 +101,9 @@ namespace ChinoExplorer
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
-            ShowConnectionDialog();
+            ShowConnectionDialog(true);
         }
-        
+
         private void InitializeApi()
         {
             SchemaList = new Dictionary<string, Schema>();
@@ -101,7 +119,7 @@ namespace ChinoExplorer
             }
 
             CreateRootNodes();
-            
+
             var listResult = Api.Schemas.List(RepositoryId, 0, 100);
             foreach (var schema in listResult.Schemas)
             {
@@ -150,7 +168,7 @@ namespace ChinoExplorer
 
             foreach (var kvp in UserSchemaList)
             {
-                var schema = kvp.Value;                
+                var schema = kvp.Value;
                 var tsItem = addNewUserToolStripMenuItem.DropDownItems.Add(schema.Description);
                 tsItem.Image = Properties.Resources.schema;
                 tsItem.Tag = schema;
@@ -216,7 +234,7 @@ namespace ChinoExplorer
                 else if (field.Type == SchemaFieldType.text) val = string.Empty;
                 else if (field.Type == SchemaFieldType.time) val = DateTime.Now.TimeOfDay;
 
-                user.Attributes.Add(field.Name, val);                
+                user.Attributes.Add(field.Name, val);
             }
 
             GenerateUserDataViewWindow(user, schema);
@@ -226,7 +244,7 @@ namespace ChinoExplorer
         {
             tvSchemas.Nodes.Clear();
             tvDetails.Nodes.Clear();
-            
+
             tnSchemas = CreateParentNode("Schemas");
             tvSchemas.Nodes.Add(tnSchemas);
 
@@ -244,7 +262,7 @@ namespace ChinoExplorer
             treeNode.ImageKey = "folder_grey";
             treeNode.SelectedImageKey = "folder_red";
             treeNode.StateImageKey = "folder_red_open";
-            
+
             return treeNode;
         }
 
@@ -262,7 +280,7 @@ namespace ChinoExplorer
         {
             if (collection == null) return;
             var win = new CollectionDataWindow(Api, collection);
-            win.MdiParent = this;            
+            win.MdiParent = this;
             win.Visible = true;
         }
 
@@ -288,14 +306,15 @@ namespace ChinoExplorer
             f.MdiParent = this;
             f.Visible = true;
         }
-        
+
         private void GenerateDataViewWindow()
         {
             if (tvSchemas.SelectedNode == null || tvSchemas.SelectedNode.Tag == null) return;
             if (tvSchemas.SelectedNode.Tag.GetType() == typeof(Schema))
             {
                 GenerateSchemaDataViewWindow();
-            } else if (tvSchemas.SelectedNode.Tag.GetType() == typeof(Collection))
+            }
+            else if (tvSchemas.SelectedNode.Tag.GetType() == typeof(Collection))
             {
                 GenerateCollectionDataViewWindow(tvSchemas.SelectedNode.Tag as Collection);
             }
@@ -303,7 +322,7 @@ namespace ChinoExplorer
             {
                 GenerateUserDataViewWindow(tvSchemas.SelectedNode.Tag as User);
             }
-        }        
+        }
 
         private void ShowWindow(Form form)
         {
@@ -354,16 +373,16 @@ namespace ChinoExplorer
                 var schemaNode = schemaNodes.FirstOrDefault();
 
                 if (schemaNode != null)
-                {                    
+                {
                     var userNodes = from node in schemaNode.Nodes.Cast<TreeNode>()
                                     where
-                                        node.Tag != null 
+                                        node.Tag != null
                                         && node.Tag.GetType() == typeof(User)
-                                        // && ((User)node.Tag).Id == user.Id
+                                    // && ((User)node.Tag).Id == user.Id
                                     select node;
 
                     // this is the node where the user is displayed
-                    var userNode = userNodes.FirstOrDefault(o=>(o.Tag as User).Name == user.Name);
+                    var userNode = userNodes.FirstOrDefault(o => (o.Tag as User).Name == user.Name);
 
                     if (userNode != null)
                     {
@@ -373,7 +392,8 @@ namespace ChinoExplorer
                         if (method == UserDataWindow.UserUpdateMethod.Create)
                         {   // select the newly generated user
                             tvSchemas.SelectedNode = userNode;
-                        } else
+                        }
+                        else
                         {
                             // simply update the selected text
                             userNode.Text = user.Name;
@@ -384,12 +404,12 @@ namespace ChinoExplorer
         }
 
         private void tvSchemas_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {            
+        {
             GenerateDataViewWindow();
         }
 
         private void tvSchemas_AfterSelect(object sender, TreeViewEventArgs e)
-        {            
+        {
             tvDetails.Nodes.Clear();
             if (e.Node == null || e.Node.Tag == null) return;
 
@@ -441,7 +461,7 @@ namespace ChinoExplorer
                 {
                     Api.Users.Delete(user.Id);
                     tvSchemas.Nodes.Remove(node);
-                }                
+                }
             }
         }
 
@@ -485,7 +505,7 @@ namespace ChinoExplorer
                 case SchemaFieldType.time:
                 case SchemaFieldType.date:
                 case SchemaFieldType.datetime:
-                    return "TEXT";                
+                    return "TEXT";
 
             }
 
@@ -499,7 +519,8 @@ namespace ChinoExplorer
             var schema = tn.Tag as Schema;
             if (schema == null) return;
 
-            using (var frm = new SqlForm()) {
+            using (var frm = new SqlForm())
+            {
                 var fields = new List<string>();
                 string sql = "CREATE TABLE " + schema.Description + " (";
                 fields.Add("\r\n\tId TEXT NOT NULL");
@@ -519,5 +540,33 @@ namespace ChinoExplorer
                 frm.ShowDialog();
             }
         }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var tn = tvSchemas.SelectedNode;
+            if (tn.Tag == null) return;
+            var schema = tn.Tag as Schema;
+            if (schema == null) return;
+
+            if (MessageBox.Show(this, "Are you sure to delete the schema \"" + schema.Description + "\" ?\nAll contained Documents will be lost.", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes) return;
+
+            var documents = Api.Documents.List(0, 1, schema.Id, false);
+            var count = documents.Total;
+            var docs = new List<Document>();
+            while (docs.Count() < count)
+            {
+                var tmp = Api.Documents.List(docs.Count(), schema.Id, false);
+                docs.AddRange(tmp.Documents);
+            }
+
+            foreach (var doc in docs)
+            {
+                Api.Documents.Delete(doc.Id);
+            }
+
+            Api.Schemas.Delete(schema.Id);
+            tvSchemas.Nodes.Remove(tn);
+        }
     }
 }
+
