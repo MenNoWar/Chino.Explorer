@@ -47,8 +47,9 @@ namespace ChinoExplorer
             dt.BeginInit();
 
             var idColumn = dt.Columns.Add("$DocumentId", typeof(string));
-
-            dt.Columns.Add("IsActive", typeof(bool));
+            dt.Columns.Add("$IsActive", typeof(bool));
+            var crtd = dt.Columns.Add("$Created", typeof(DateTime));
+            var mdff = dt.Columns.Add("$Modified", typeof(DateTime));
 
             foreach (var fd in schema.Fields)
             {
@@ -79,7 +80,7 @@ namespace ChinoExplorer
         {
             if (CurrentSchema == null) return;
             var currentTable = (DataTable)chinoData.DataSource;
-            var listResult = Api.Documents.List(CurrentStart, 25, CurrentSchema.Id, true);
+            var listResult = Api.Documents.List(CurrentStart, 100, CurrentSchema.Id, true);
             CurrentStart += listResult.Count;
             currentTable.BeginLoadData();
 
@@ -87,7 +88,9 @@ namespace ChinoExplorer
             {
                 var dr = currentTable.Rows.Add();
                 dr["$DocumentId"] = doc.Id;
-                dr["IsActive"] = doc.IsActive;
+                dr["$IsActive"] = doc.IsActive;
+                dr["$Created"] = doc.Created;
+                dr["$Modified"] = doc.Updated;
 
                 foreach (var prop in doc.Content)
                 {
@@ -118,6 +121,8 @@ namespace ChinoExplorer
 
             foreach (DataColumn col in row.Table.Columns)
             {
+                if (col.ColumnName.StartsWith("$")) continue;
+
                 var fd = CurrentSchema.Fields.FirstOrDefault(o => o.Name == col.ColumnName);
                 if (fd != null && fd.Type != SchemaFieldType.blob)
                 {
@@ -155,13 +160,16 @@ namespace ChinoExplorer
                 }
             }
         }
-
+        
         private void chinoData_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             var id = (string)e.Row.Cells["$DocumentId"].Value;
             if (MessageBox.Show("Really delete the selected row?", "Confirm", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Api.Documents.Delete(id);
+            } else
+            {
+                e.Cancel = true;
             }
         }
 
@@ -192,8 +200,8 @@ namespace ChinoExplorer
                         ValidateDataRow(row);
                         var doc = DataRowToDocument(row);
                         var id = Api.Documents.Create(CurrentSchema.Id, doc);
-                        row["DocumentId"] = id;
-                        row["IsActive"] = true;
+                        row["$DocumentId"] = id;
+                        row["$IsActive"] = true;
                         break;
                     case DataRowState.Deleted:
                         // Api.Documents.Create(CurrentSchema.Id, doc);
@@ -221,6 +229,11 @@ namespace ChinoExplorer
                 MessageBox.Show(ex.Message);
                 e.Cancel = true;
             }
+        }
+
+        private void btn_LoadNext100_Click(object sender, EventArgs e)
+        {
+            this.GetData(this.CurrentSchema.Id);
         }
     }
 }
